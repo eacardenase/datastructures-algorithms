@@ -17,8 +17,17 @@ import Foundation
  */
 
 func solution(A: [Int], K: Int) -> [Int] {
+    guard !A.isEmpty else { return [] }
+    guard K > 0 else { return A }
+
     var rotated = [Int]()
-    let target = A.count - K
+    var iterations = K
+
+    if iterations > A.count {
+        iterations = K - A.count
+    }
+
+    let target = A.count - iterations
 
     for i in target..<A.count {
         rotated.append(A[i])
@@ -36,3 +45,6 @@ print(solution(A: [1, 2, 3, 4, 5], K: 2))  // 4 5 1 2 3
 print(solution(A: [1, 2, 3, 4, 5], K: 3))  // 3 4 5 1 2
 print(solution(A: [3, 8, 9, 7, 6], K: 3))  // 9 7 6 3 8
 print(solution(A: [1, 2, 3, 4], K: 4))  // [1, 2, 3, 4]
+print(solution(A: [], K: 1))
+print(solution(A: [1, 2, 3, 4], K: 5))
+print(solution(A: [1, 2, 3, 4], K: 6))
