@@ -55,7 +55,7 @@ func solution(_ S: String) -> String {
     }
 
     for idx in test...cleanedCount - 1 {
-        if idx % 2 == 0 {
+        if idx % 2 == 0 && idx != 0 {
             formattedPhoneNumberArray.append("-")
         }
         
@@ -65,13 +65,13 @@ func solution(_ S: String) -> String {
     return formattedPhoneNumberArray.joined()
 }
 
-print(solution("123456789"))  // 123-456-789
-print(solution("555372654"))  // 555-372-654
+//print(solution("123456789"))  // 123-456-789
+//print(solution("555372654"))  // 555-372-654
 print(solution("0 - 22 1985--324")) // 022-198-53-24
 
 // Edge cases
-print(solution("01"))  // 01
-print(solution("012"))  // 012
-//print(solution("0123"))                        // 01-23
-//print(solution("0123       444"))              // 012-34-44
-//print(solution("------0123       444"))        // 012-34-44
+//print(solution("01"))  // 01
+//print(solution("012"))  // 012
+print(solution("0123"))                        // 01-23
+print(solution("0123       444"))              // 012-34-44
+print(solution("------0123       444"))        // 012-34-44
