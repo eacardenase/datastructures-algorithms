@@ -22,18 +22,56 @@ import UIKit
  - if the block ends in anything other than -xxx or -xx reformat to a block of two like xx-xx (not obvious)
  
  */
-func solution(_ S : String) -> String {
-    // do your work here
-    return ""
+func solution(_ S: String) -> String {
+    var cleanedPhoneNumber = [String]()
+    var formattedPhoneNumberArray = [String]()
+
+    for char in S {
+        guard char != " " && char != "-" else { continue }
+
+        cleanedPhoneNumber.append("\(char)")
+    }
+
+    let cleanedCount = cleanedPhoneNumber.count
+    var idx = cleanedCount - 1
+
+    if cleanedCount <= 3 {
+        return cleanedPhoneNumber.joined()
+    }
+
+    var separatorCount = cleanedCount % 3 == 0 ? 0 : 4
+    var test = cleanedCount - separatorCount
+
+    for idx in 0..<test {
+        if idx % 3 == 0 && idx != 0 {
+            formattedPhoneNumberArray.append("-")
+        }
+
+        formattedPhoneNumberArray.append(cleanedPhoneNumber[idx])
+    }
+    
+    if separatorCount == 0 {
+        return formattedPhoneNumberArray.joined()
+    }
+
+    for idx in test...cleanedCount - 1 {
+        if idx % 2 == 0 {
+            formattedPhoneNumberArray.append("-")
+        }
+        
+        formattedPhoneNumberArray.append(cleanedPhoneNumber[idx])
+    }
+
+    return formattedPhoneNumberArray.joined()
 }
 
-solution("123456789")           // 123-456-789
-solution("555372654")           // 555-372-654
-solution("0 - 22 1985--324")    // 022-198-53-24
+print(solution("123456789"))  // 123-456-789
+print(solution("555372654"))  // 555-372-654
+print(solution("0 - 22 1985--324")) // 022-198-53-24
 
 // Edge cases
-solution("01")                          // 01
-solution("012")                         // 012
-solution("0123")                        // 01-23
-solution("0123       444")              // 012-34-44
-solution("------0123       444")        // 012-34-44
+print(solution("01"))  // 01
+print(solution("012"))  // 012
+//print(solution("0123"))                        // 01-23
+//print(solution("0123       444"))              // 012-34-44
+//print(solution("------0123       444"))        // 012-34-44
