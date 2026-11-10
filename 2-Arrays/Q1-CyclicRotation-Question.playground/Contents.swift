@@ -48,3 +48,5 @@ print(solution(A: [1, 2, 3, 4], K: 4))  // [1, 2, 3, 4]
 print(solution(A: [], K: 1))
 print(solution(A: [1, 2, 3, 4], K: 5))
 print(solution(A: [1, 2, 3, 4], K: 6))
+print(solution(A: [1, 2, 3, 4, 5], K: 2))
+print(solution(A: [8, 9 , 10], K: 1))
