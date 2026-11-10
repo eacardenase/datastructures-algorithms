@@ -76,10 +76,10 @@ func quadratic(_ n: Int) -> Int {
 quadratic(16)
 
 var arr = [1, 2, 3]
-arr.append(4)
+arr.append(4) // Usually O(1), worst case O(n)
 
 var set = Set<Int>()
-set.count
+set.count // O(1)
 
 ///
 /// Given two arrays, create a function that let's a user know whether these two arrays contain any common items.
