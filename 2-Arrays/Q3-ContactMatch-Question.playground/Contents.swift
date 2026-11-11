@@ -19,13 +19,13 @@ import Foundation
 public func solution(_ A: [String], _ B: [String], _ P: String) -> String {
     var contacts = [String]()
 
-    for (idx, number) in B.enumerated() {
-        if number.contains(P) {
+    for idx in 0..<B.count {
+        if B[idx].contains(P) {
             contacts.append(A[idx])
         }
     }
 
-    let result = contacts.sorted().first ?? ""
+    let result = contacts.sorted().first ?? "NO CONTACT"
 
     return result
 }
